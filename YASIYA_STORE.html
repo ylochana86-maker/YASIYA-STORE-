@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="si">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="YASIYA STORE - Free Fire Diamond Top Up">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<title>YASIYA STORE</title>
+<style>
+:root{
+  --bg:#050505; --panel:#101010; --panel2:#171717; --red:#e50914;
+  --red2:#ff2b2b; --gold:#ffbf00; --text:#fff; --muted:#b9b9b9;
+  --line:rgba(255,255,255,.09);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+background:radial-gradient(circle at 50% -10%,#4a0707 0,#100000 28%,var(--bg) 62%);
+color:var(--text);min-height:100vh}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:720px;margin:auto;padding:16px 14px 34px}
+.hero{position:relative;overflow:hidden;border:1px solid rgba(255,50,50,.28);
+border-radius:24px;padding:22px 18px;text-align:center;background:linear-gradient(145deg,#210000,#090909 60%,#1a0000);
+box-shadow:0 0 35px rgba(255,0,0,.14)}
+.hero:before,.hero:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;
+background:rgba(255,0,0,.12);filter:blur(30px)}
+.hero:before{left:-70px;top:-70px}.hero:after{right:-70px;bottom:-70px}
+.logo{width:94px;height:94px;border-radius:22px;object-fit:cover;border:2px solid #ff2b2b;
+box-shadow:0 0 24px rgba(255,0,0,.35);position:relative}
+h1{font-size:26px;margin:12px 0 3px;letter-spacing:.5px}
+.tag{color:#ffcf4a;font-weight:800;font-size:13px;letter-spacing:1.5px}
+.section{margin-top:18px}
+.title{display:flex;align-items:center;gap:9px;margin:0 0 11px;font-size:18px}
+.title:before{content:"";width:5px;height:23px;border-radius:5px;background:linear-gradient(#ff3333,#ffb000)}
+.card{background:linear-gradient(145deg,rgba(25,25,25,.96),rgba(10,10,10,.96));
+border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:0 8px 25px rgba(0,0,0,.28)}
+input{width:100%;padding:14px 15px;border-radius:13px;border:1px solid #333;background:#080808;
+color:#fff;outline:none;font-size:15px}
+input:focus{border-color:#e11;box-shadow:0 0 0 3px rgba(229,9,20,.12)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.item{padding:14px 12px;border-radius:15px;border:1px solid #292929;background:#111;cursor:pointer;
+transition:.15s;position:relative}
+.item:hover{transform:translateY(-1px);border-color:#8c1717}
+.item.selected{border-color:#ff2a2a;background:linear-gradient(145deg,#2a0606,#111);box-shadow:0 0 0 1px #ff2a2a inset}
+.diamond{font-weight:900;font-size:17px}.price{color:#ffcc42;font-weight:900;margin-top:5px}
+.item small{color:#a9a9a9}
+.badge{position:absolute;right:9px;top:9px;font-size:9px;background:#d90a15;padding:3px 6px;border-radius:10px}
+.paynum{display:flex;gap:8px;align-items:center}
+.paynum code{flex:1;background:#050505;border:1px solid #2b2b2b;padding:13px;border-radius:12px;
+font-size:17px;font-weight:800;letter-spacing:1px}
+button{border:0;border-radius:12px;padding:12px 14px;font-weight:900;cursor:pointer}
+.copy{background:#242424;color:#fff}
+.notice{margin-top:10px;color:#ffd1d1;background:rgba(160,0,0,.18);border:1px solid rgba(255,50,50,.25);
+padding:12px;border-radius:12px;font-size:13px;line-height:1.5}
+.order{width:100%;margin-top:12px;padding:16px;background:linear-gradient(90deg,#d80816,#ff3a19);
+color:#fff;font-size:17px;box-shadow:0 8px 25px rgba(229,9,20,.22)}
+.wa{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:12px;padding:14px;
+border:1px solid #197d43;background:#0c2519;color:#d9ffe8;border-radius:13px;font-weight:900}
+.summary{display:flex;justify-content:space-between;gap:12px;padding:12px 0;color:#ddd;border-top:1px solid #222;margin-top:12px}
+.footer{text-align:center;color:#777;font-size:12px;margin-top:22px}
+@media(max-width:430px){.grid{grid-template-columns:1fr 1fr}.item{padding:12px 9px}.diamond{font-size:15px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <img class="logo" src="logo.png" alt="YASIYA STORE logo">
+    <h1>ADMIN YASIYA DIAMOND STORE</h1>
+    <div class="tag">YASIYA STORE • FREE FIRE TOP UP</div>
+  </header>
+
+  <section class="section">
+    <h2 class="title">Player ID</h2>
+    <div class="card"><input id="playerId" inputmode="numeric" placeholder="ඔබගේ Free Fire Player ID එක මෙතැන දාන්න"></div>
+  </section>
+
+  <section class="section">
+    <h2 class="title">💎 Diamond Packages</h2>
+    <div class="grid" id="diamonds"></div>
+  </section>
+
+  <section class="section">
+    <h2 class="title">🎫 Memberships</h2>
+    <div class="grid" id="memberships"></div>
+  </section>
+
+  <section class="section">
+    <h2 class="title">🚀 Levelup Pass</h2>
+    <div class="grid">
+      <div class="item" data-name="Levelup Pass" data-price="1520"><div class="diamond">Levelup Pass</div><div class="price">LKR 1,520/=</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="title">💳 EZ Cash</h2>
+    <div class="card">
+      <div class="paynum">
+        <code id="ezcash">0761874688</code>
+        <button class="copy" onclick="copyText('0761874688',this)">COPY</button>
+      </div>
+      <div class="notice">ඔබ ගෙවන සෑම ගෙවීමකදීම LKR 20 සේවා ගාස්තුව ගෙවීමට කාරුණික වන්න.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="title">RN Number</h2>
+    <div class="card"><input id="rn" placeholder="ගෙවීමෙන් පසු RN Number එක මෙතැන දාන්න"></div>
+  </section>
+
+  <section class="section">
+    <div class="card">
+      <div><b>Selected:</b> <span id="selected">කිසිවක් තෝරාගෙන නැත</span></div>
+      <div class="summary"><span>Total</span><b id="total">LKR 0/=</b></div>
+      <button class="order" onclick="orderNow()">ORDER NOW</button>
+      <a class="wa" href="https://wa.me/94761874688" target="_blank">💬 WhatsApp: 0761874688</a>
+    </div>
+  </section>
+
+  <div class="footer">ADMIN YASIYA • YASIYA STORE</div>
+</div>
+
+<script>
+const diamonds = [
+ ["💎 25","100"],["💎 50","190"],["💎 100","320"],["💎 200","650"],["💎 310","960"],
+ ["💎 520","1580"],["💎 830","2590"],["💎 1060","3000"],["💎 1580","4600"]
+];
+const memberships = [
+ ["Weekly Lite","140"],["Weekly","560"],["Monthly","2850"],["VIP","3400"],["SVIP","5100"]
+];
+let selected = null;
+
+function render(list,id){
+  const el=document.getElementById(id);
+  el.innerHTML=list.map((x,i)=>`<div class="item" data-name="${x[0]}" data-price="${x[1]}">
+    ${i===0 && id==='memberships' ? '<span class="badge">POPULAR</span>':''}
+    <div class="diamond">${x[0]}</div><div class="price">LKR ${Number(x[1]).toLocaleString()}/=</div>
+  </div>`).join('');
+  el.querySelectorAll('.item').forEach(card=>card.addEventListener('click',()=>select(card)));
+}
+function select(card){
+  document.querySelectorAll('.item').forEach(x=>x.classList.remove('selected'));
+  card.classList.add('selected');
+  selected={name:card.dataset.name,price:Number(card.dataset.price)};
+  document.getElementById('selected').textContent=selected.name;
+  document.getElementById('total').textContent='LKR '+selected.price.toLocaleString()+'/=';
+}
+async function copyText(text,btn){
+  try{await navigator.clipboard.writeText(text);btn.textContent='COPIED';setTimeout(()=>btn.textContent='COPY',1200);}
+  catch(e){alert('Number: '+text);}
+}
+function orderNow(){
+  const player=document.getElementById('playerId').value.trim();
+  const rn=document.getElementById('rn').value.trim();
+  if(!player){alert('Player ID එක ඇතුළත් කරන්න.');return;}
+  if(!selected){alert('Package එකක් තෝරන්න.');return;}
+  if(!rn){alert('RN Number එක ඇතුළත් කරන්න.');return;}
+  const msg=`YASIYA STORE ORDER%0A%0APlayer ID: ${encodeURIComponent(player)}%0APackage: ${encodeURIComponent(selected.name)}%0APrice: LKR ${selected.price}%0ARN Number: ${encodeURIComponent(rn)}%0A%0AEZ Cash: 0761874688`;
+  window.open('https://wa.me/94761874688?text='+msg,'_blank');
+}
+render(diamonds,'diamonds');
+render(memberships,'memberships');
+</script>
+<script>
+if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+</body>
+</html>
